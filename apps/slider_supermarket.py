@@ -16,6 +16,11 @@ external_stylesheets = [dbc.themes.LUX]
 
 df = pd.read_csv('supermarket.csv')
 
+#fig_prd = px.scatter(df, x="Product line", y="Quantity", color="City")
+fig_prd = px.bar(df, x="Product line", y="Quantity")
+fig_grs = px.pie(df, values='Total', names='Product line', title='Total Product Sales')
+#fig_grs = px.scatter(df, x="Product line", y="gross income", color="Branch")
+
 layout = html.Div(children=[
     dbc.Row([
         dbc.Col(
@@ -53,8 +58,18 @@ layout = html.Div(children=[
         value = pd.DatetimeIndex(df['Time']).hour.min(),
         marks={str(date): str(date) for date in pd.DatetimeIndex(df['Time']).hour.unique()},
         step=None
+    ),
+    dcc.Graph(
+        id='graph-prd',
+        figure=fig_prd
+    ),
+    dcc.Graph(
+        id='graph-grs',
+        figure=fig_grs
     )
 ])
+
+
 
 @app.callback(
     Output('graph-with-slider', 'figure'),

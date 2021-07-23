@@ -103,7 +103,7 @@ layout = html.Div(children=[
         ]),
     dbc.Row([
         dbc.Col(
-            html.H6(children='Kesimpulan : Nilai p-value > 0.05 H0 diterima.'),
+            html.H6(children='Kesimpulan : Nilai p-value > 0.05 H0 diterima. Fashion accessories dan Food beverages tidak ada hubungan erat antar values'),
             className="mb-4"
             )
         ])
